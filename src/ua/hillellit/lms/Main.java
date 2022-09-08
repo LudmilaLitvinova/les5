@@ -42,7 +42,6 @@ public class Main {
                     break;
             }
         }
-
     }
 
     public static double getAllAreas(Areaable[] array) {
