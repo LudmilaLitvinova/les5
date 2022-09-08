@@ -16,19 +16,19 @@ public class Main {
     public static void main(String[] args) {
         Circle cr1 = new Circle(3);
         System.out.print("Площа кола: ");
-        System.out.printf("%.2f\n",cr1.calculateArea());
+        System.out.printf("%.2f\n", cr1.calculateArea());
 
         Square sq1 = new Square(4);
         System.out.print("Площа квадрата: ");
-        System.out.printf("%.2f\n",sq1.calculateArea());
+        System.out.printf("%.2f\n", sq1.calculateArea());
 
         Triangle tr1 = new Triangle(2, 3, 4);
         System.out.print("Площа трикутника: ");
-        System.out.printf("%.2f\n",tr1.calculateArea());
+        System.out.printf("%.2f\n", tr1.calculateArea());
 
         Areaable[] array = {cr1, sq1, tr1};
         System.out.print("Площа усіх фігур: ");
-        System.out.printf("%.2f\n",getAllAreas(array));
+        System.out.printf("%.2f\n", getAllAreas(array));
 
         Obstacles[] obstacles = {new Wall("Цегляна стіна", 2), new Racetrack("RK45566", 567)};
 
@@ -37,12 +37,7 @@ public class Main {
         for (Memberable member : members) {
             boolean response;
             for (Obstacles obs : obstacles) {
-                if (obs.getClass() == Racetrack.class) {
-                    response = member.run(obs);
-
-                } else {
-                    response = member.jump(obs);
-                }
+                response = obs.overcome(member);
                 if (!response)
                     break;
             }

@@ -1,11 +1,11 @@
 package ua.hillellit.lms.model.members;
 
-import ua.hillellit.lms.model.obstacles.Obstacles;
 import ua.hillellit.lms.model.obstacles.Racetrack;
 import ua.hillellit.lms.model.obstacles.Wall;
 
 public class Human implements Memberable {
     private String name;
+
     private final int maxHeight = 2;
     private final int maxLength = 567;
 
@@ -14,33 +14,29 @@ public class Human implements Memberable {
     }
 
     @Override
-    public boolean run(Obstacles obs) {
-        if (obs.getClass() == Racetrack.class) {
-            if (((Racetrack) obs).getLength() <= maxLength) {
-                System.out.println("Учасник " + name + " пройшов перешкоду " + ((Racetrack) obs).getType() +
-                        " на дистанції " + ((Racetrack) obs).getLength());
+    public boolean run(Racetrack obs) {
+            if (obs.getLength() <= maxLength) {
+                System.out.println("Учасник " + name + " пройшов перешкоду " + obs.getType() +
+                        " на дистанції " + obs.getLength());
+                return true;
             } else {
-                System.out.println("Учасник " + name + " не пройшов перешкоду " + ((Racetrack) obs).getType() +
+                System.out.println("Учасник " + name + " не пройшов перешкоду " + obs.getType() +
                         " на дистанції. Пройдено " + maxLength);
                 return false;
             }
-        }
-        return true;
     }
 
     @Override
-    public boolean jump(Obstacles obs) {
-        if (obs.getClass() == Wall.class) {
-            if (((Wall) obs).getHeight() <= maxHeight) {
-                System.out.println("Учасник " + name + " пройшов перешкоду " + ((Wall) obs).getType() +
-                        " на дистанції " + ((Wall) obs).getHeight());
+    public boolean jump(Wall obs) {
+            if (obs.getHeight() <= maxHeight) {
+                System.out.println("Учасник " + name + " пройшов перешкоду " +  obs.getType() +
+                        " на дистанції " + obs.getHeight());
+                return true;
             } else {
-                System.out.println("Учасник " + name + " не пройшов перешкоду " + ((Wall) obs).getType() +
+                System.out.println("Учасник " + name + " не пройшов перешкоду " +  obs.getType() +
                         " на дистанції. Пройдено " + maxHeight);
                 return false;
             }
-        }
-        return true;
     }
 
     public String getName() {

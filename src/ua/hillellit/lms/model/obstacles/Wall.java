@@ -1,5 +1,7 @@
 package ua.hillellit.lms.model.obstacles;
 
+import ua.hillellit.lms.model.members.Memberable;
+
 public class Wall implements Obstacles {
     private String type;
     private int height;
@@ -10,8 +12,8 @@ public class Wall implements Obstacles {
     }
 
     @Override
-    public void overcome() {
-
+    public boolean overcome(Memberable member) {
+        return member.jump(this);
     }
 
     public String getType() {

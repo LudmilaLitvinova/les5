@@ -1,5 +1,7 @@
 package ua.hillellit.lms.model.obstacles;
 
+import ua.hillellit.lms.model.members.Memberable;
+
 public class Racetrack implements Obstacles {
     private String type;
     private int length;
@@ -10,8 +12,8 @@ public class Racetrack implements Obstacles {
     }
 
     @Override
-    public void overcome() {
-
+    public boolean overcome(Memberable member) {
+        return member.run(this);
     }
 
     public String getType() {

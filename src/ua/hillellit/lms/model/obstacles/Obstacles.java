@@ -1,5 +1,7 @@
 package ua.hillellit.lms.model.obstacles;
 
+import ua.hillellit.lms.model.members.Memberable;
+
 public interface Obstacles {
-    void overcome();
+    boolean overcome(Memberable member);
 }
